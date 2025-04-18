@@ -1,0 +1,332 @@
+{
+  "version": "0.1.0",
+  "name": "befkir",
+  "instructions": [
+    {
+      "name": "registerUsername",
+      "accounts": [
+        {
+          "name": "userProfile",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "signer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "username",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "sendToAddress",
+      "accounts": [
+        {
+          "name": "transfer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "signer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "recipient",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "amount",
+          "type": "u64"
+        },
+        {
+          "name": "remarks",
+          "type": "string"
+        },
+        {
+          "name": "transferId",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "claimTransfer",
+      "accounts": [
+        {
+          "name": "transfer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "signer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "transferId",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "refundTransfer",
+      "accounts": [
+        {
+          "name": "transfer",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "signer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "transferId",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "createGroupPayment",
+      "accounts": [
+        {
+          "name": "groupPayment",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "signer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "recipient",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "paymentId",
+          "type": "u64"
+        },
+        {
+          "name": "numParticipants",
+          "type": "u64"
+        },
+        {
+          "name": "amountPerPerson",
+          "type": "u64"
+        },
+        {
+          "name": "remarks",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "contributeToGroupPayment",
+      "accounts": [
+        {
+          "name": "groupPayment",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "signer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "recipient",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "paymentId",
+          "type": "u64"
+        },
+        {
+          "name": "amount",
+          "type": "u64"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "UserProfile",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "owner",
+            "type": "publicKey"
+          },
+          {
+            "name": "username",
+            "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "name": "Transfer",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "sender",
+            "type": "publicKey"
+          },
+          {
+            "name": "recipient",
+            "type": "publicKey"
+          },
+          {
+            "name": "amount",
+            "type": "u64"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "remarks",
+            "type": "string"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    },
+    {
+      "name": "GroupPayment",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "creator",
+            "type": "publicKey"
+          },
+          {
+            "name": "recipient",
+            "type": "publicKey"
+          },
+          {
+            "name": "totalAmount",
+            "type": "u64"
+          },
+          {
+            "name": "amountPerPerson",
+            "type": "u64"
+          },
+          {
+            "name": "numParticipants",
+            "type": "u64"
+          },
+          {
+            "name": "amountCollected",
+            "type": "u64"
+          },
+          {
+            "name": "status",
+            "type": "u8"
+          },
+          {
+            "name": "remarks",
+            "type": "string"
+          },
+          {
+            "name": "timestamp",
+            "type": "i64"
+          }
+        ]
+      }
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "UsernameTooLong",
+      "msg": "Username too long"
+    },
+    {
+      "code": 6001,
+      "name": "RemarksTooLong",
+      "msg": "Remarks too long"
+    },
+    {
+      "code": 6002,
+      "name": "InvalidTransferState",
+      "msg": "Invalid transfer state"
+    },
+    {
+      "code": 6003,
+      "name": "Unauthorized",
+      "msg": "Unauthorized access"
+    },
+    {
+      "code": 6004,
+      "name": "InsufficientFunds",
+      "msg": "Insufficient funds"
+    },
+    {
+      "code": 6005,
+      "name": "GroupPaymentCompleted",
+      "msg": "Group payment already completed"
+    },
+    {
+      "code": 6006,
+      "name": "TransferAmountExceedsBalance",
+      "msg": "Transfer amount exceeds balance"
+    }
+  ]
+}
