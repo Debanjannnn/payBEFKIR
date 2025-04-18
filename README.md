@@ -130,7 +130,7 @@ MIT License – see [LICENSE](./LICENSE)
 
 ## 📧 Contact  
 Maintainer: [Debanjan (@Debanjannnn)](https://github.com/Debanjannnn)  
-X (Twitter): *Coming Soon*
+X (Twitter): [https://x.com/Befkir116923]
 
 ---
 
