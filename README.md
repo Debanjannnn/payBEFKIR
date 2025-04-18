@@ -1,4 +1,3 @@
----
 
 # payBEFKIR 💸  
 **Secure and Inclusive Payment dApp on Solana**
